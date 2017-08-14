@@ -59,6 +59,15 @@ public class MemberController {
 			return form();
 		}
 		
+		String email = form.getMailAddress();
+		Member checkMember = memberService.findByMainAddress(email);
+		
+		if (checkMember != null) {
+			String emailError = "このメールアドレスは既に使われています。";
+			model.addAttribute("mailError", emailError);
+			return form();
+		}
+		
 		Member member = new Member();
 		BeanUtils.copyProperties(form, member);
 		memberService.save(member);

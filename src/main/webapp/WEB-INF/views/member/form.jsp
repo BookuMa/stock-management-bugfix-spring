@@ -21,7 +21,8 @@
 			      	メールアドレス<form:errors path="mailAddress" cssStyle="color:red"/>
 			    </th>
 			    <td>
-			    	<form:input path="mailAddress" placeholder="Email"/>
+			    	<form:input path="mailAddress" placeholder="Email"/><br>
+			    	<c:out value="${mailError}"/>
 			    </td>
 			  </tr>
 			  <tr>

@@ -33,6 +33,16 @@ public class MemberService {
 		return memberRepository.save(member);
 	}
 	
+	/**
+	 * メールアドレスで登録者を検索
+	 * @param MailAddress
+	 * @return
+	 */
+	public Member findByMainAddress(String MailAddress){
+		return memberRepository.findByMainAddress(MailAddress);
+	}
+	
+	
 //	public Member update(Member member){
 //		return memberRepository.save(member);
 //	}
