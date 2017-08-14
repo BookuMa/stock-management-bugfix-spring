@@ -38,7 +38,7 @@
 			      価格
 			    </th>
 			    <td>
-			      <c:out value="${book.price}"/>円
+			      <fmt:formatNumber value="${book.price}" pattern="###,###"/>円
 			    </td>
 			  </tr>
 			  <tr>
@@ -54,7 +54,8 @@
 			      発売日
 			    </th>
 			    <td>
-			      <c:out value="${book.saledate}"/>
+			    <!-- 発売日の表示を変更 -->
+			      <fmt:formatDate value="${book.saledate}" pattern="yyyy年MM年dd日"/>
 			    </td>
 			  </tr>
 			  <tr>
