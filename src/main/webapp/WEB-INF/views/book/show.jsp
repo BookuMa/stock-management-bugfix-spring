@@ -88,8 +88,12 @@
 			    </td>
 			  </tr>
 			</table>
+			<div id="return-button">
+				<input type="button" value="戻る" onclick="location.href='/book/list'">
+			</div>
 		</div>
 	</div>
+	
 </div>
 </body>
 </html>
