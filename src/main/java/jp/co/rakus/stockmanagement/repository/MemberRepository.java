@@ -42,14 +42,11 @@ public class MemberRepository {
 	 * @return メンバー情報.メンバーが存在しない場合はnull.
 	 */
 	public Member findByMailAddressAndPassword(String mailAddress, String password) {
-		SqlParameterSource param = new MapSqlParameterSource();
+		String sql = "select id, name, mail_address, password from members where mail_address = :mailaddress and password = :password";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("mailaddress", mailAddress).addValue("password", password);
 		Member member = null;
 		try{
-			member = jdbcTemplate.queryForObject(
-					"SELECT id,name,mail_address,password FROM members WHERE mail_address= '"
-							+ mailAddress + "' and password='" + password + "'",
-					param, 
-					MEMBER_ROW_MAPPER);
+			member = template.queryForObject(sql, param, MEMBER_ROW_MAPPER);
 			return member;
 		} catch(DataAccessException e) {
 			e.printStackTrace();
