@@ -5,6 +5,7 @@ import java.sql.Date;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * 書籍関連のリクエストパラメータが入るフォーム.
@@ -38,7 +39,7 @@ public class BookForm {
 	private String explanation;
 	/** 画像 */
     @NotBlank
-	private String image;
+	private MultipartFile image;
 	/** 在庫  */
     @NotNull(message = "値を入力してください")
 	private Integer stock;
@@ -88,13 +89,14 @@ public class BookForm {
 	public void setExplanation(String explanation) {
 		this.explanation = explanation;
 	}
-	public String getImage() {
+	
+	
+	public MultipartFile getImage() {
 		return image;
 	}
-	public void setImage(String image) {
+	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
-	
 	public Integer getId() {
 		return id;
 	}

@@ -1,7 +1,7 @@
 package jp.co.rakus.stockmanagement.web;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -73,8 +73,14 @@ public class MemberController {
 			return form();
 		}
 		
+		StandardPasswordEncoder encoder = new StandardPasswordEncoder();
+		String passCode = encoder.encode(form.getPassword());
+		
 		Member member = new Member();
-		BeanUtils.copyProperties(form, member);
+		member.setName(form.getName());
+		member.setMailAddress(form.getMailAddress());
+		member.setPassword(passCode);
+		
 		memberService.save(member);
 		return "redirect:/";
 	}

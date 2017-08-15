@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%@ include file="../common/common.jsp"  %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3>書籍追加画面</h3>
-	<form:form action="${pageContext.request.contextPath}/">
+	<form:form modelAttribute="bookForm">
 		<table>
 		  <tr>
 		    <th>書籍ID</th>
@@ -45,13 +45,14 @@
 		  </tr>
 		  <tr>
 		    <th>画像</th>
-		    <td><form:input path="image"/></td>
+		    <td><input type="file" name="image" accept="image/*"></td>
 		  </tr>
 		  <tr>
 		    <th>在庫数</th>
 		    <td><form:input path="author"/></td>
 		  </tr>
 		</table>
+		<input type="submit" value="登録">
 	</form:form>
 </body>
 </html>

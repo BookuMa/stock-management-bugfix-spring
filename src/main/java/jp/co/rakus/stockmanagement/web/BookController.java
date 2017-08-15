@@ -1,5 +1,6 @@
 package jp.co.rakus.stockmanagement.web;
 
+import java.sql.Date;
 import java.util.List;
 
 import jp.co.rakus.stockmanagement.domain.Book;
@@ -50,7 +51,7 @@ public class BookController {
 	}
 	
 	/**
-	 * 書籍詳細情報を取得し書籍詳細画面を表示します.
+	 * 書籍詳細情報を取得し書籍詳細画面を表示します.9
 	 * @param id 書籍ID
 	 * @param model　モデル
 	 * @return　書籍詳細画面
@@ -62,6 +63,10 @@ public class BookController {
 		return "book/show";
 	}
 	
+	@RequestMapping(value = "addbookpage")
+	public String addBook(){
+		return "book/addbook";
+	}
 	/**
 	 * 書籍更新を行います.
 	 * @param form フォーム
@@ -79,5 +84,25 @@ public class BookController {
 		bookService.update(book);
 		return list(model);
 	}
-
+	
+	@RequestMapping(value = "addbook")
+	public String addBook(@Validated BookForm form, BindingResult result){
+//		imageを追加すること
+		Integer id = form.getId();
+		String name = form.getName();
+		String author = form.getAuthor();
+		String publisher = form.getPublisher();
+		Integer price = Integer.parseInt(form.getPrice());
+		String isbnCode = form.getIsbncode();
+		Date saleDate = form.getSaledate();
+		String explanation = form.getExplanation();
+		
+		Integer stock = form.getStock();
+		
+//		ブックインスタンス化する
+		
+//		登録する情報の入ったブックオブジェクトをリポジトリに渡す
+		
+		return "book/succses-insert";
+	}
 }

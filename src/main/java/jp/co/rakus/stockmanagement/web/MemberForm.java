@@ -15,6 +15,7 @@ public class MemberForm {
 	@NotBlank(message="名前を入力してください")
 	private String name;
 	/** メールアドレス */
+	@NotBlank(message="E-mailは必須です。")
 	@Email(message="E-mailを入力してください")
 	private String mailAddress;
 	/** パスワード */
