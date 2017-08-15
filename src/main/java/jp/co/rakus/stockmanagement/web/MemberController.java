@@ -59,12 +59,11 @@ public class MemberController {
 			return form();
 		}
 		
+//		メールチェック
 		String email = form.getMailAddress();
 		Member checkMember = memberService.findByMainAddress(email);
-		
 		if (checkMember != null) {
-			String emailError = "このメールアドレスは既に使われています。";
-			model.addAttribute("mailError", emailError);
+			result.rejectValue("mailAddress", null, "このメールアドレスは既に使われています。");
 			return form();
 		}
 		
