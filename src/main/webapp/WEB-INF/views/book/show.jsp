@@ -63,7 +63,7 @@
 			      説明
 			    </th>
 			    <td>
-			      ${book.explanation}
+			      <c:out value="${book.explanation}"/>
 			    </td>
 			  </tr>
 			  <tr>
