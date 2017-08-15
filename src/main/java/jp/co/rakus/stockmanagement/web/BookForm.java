@@ -1,6 +1,10 @@
 package jp.co.rakus.stockmanagement.web;
 
+import java.sql.Date;
+
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * 書籍関連のリクエストパラメータが入るフォーム.
@@ -12,20 +16,28 @@ public class BookForm {
     @NotNull
 	private Integer id;
 	/** 書籍名 */
+    @NotBlank
 	private String name;
 	/** 著者 */
+    @NotBlank
 	private String author;
 	/** 出版社 */
+    @NotBlank
 	private String publisher;
 	/** 価格 */
+    @NotBlank
 	private String price;
 	/** ISBNコード */
+    @NotBlank
 	private String isbncode;
 	/** 発売日 */
-	private String saledate;
+    @NotBlank
+	private Date saledate;
 	/** 説明 */
+    @NotBlank
 	private String explanation;
 	/** 画像 */
+    @NotBlank
 	private String image;
 	/** 在庫  */
     @NotNull(message = "値を入力してください")
@@ -63,10 +75,11 @@ public class BookForm {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getSaledate() {
+	
+	public Date getSaledate() {
 		return saledate;
 	}
-	public void setSaledate(String saledate) {
+	public void setSaledate(Date saledate) {
 		this.saledate = saledate;
 	}
 	public String getExplanation() {

@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>書籍情報追加</title>
 </head>
 <body>
 	<h3>書籍追加画面</h3>
-	<form:form>
+	<form:form action="${pageContext.request.contextPath}/">
 		<table>
 		  <tr>
 		    <th>書籍ID</th>
@@ -36,7 +36,8 @@
 		  </tr>
 		  <tr>
 		    <th>発売日</th>
-		    <td><form:input path="saledate"/></td>
+		    
+		    <td><input type="date" name="saledate"></td>
 		  </tr>
 		  <tr>
 		    <th>説明文</th>
