@@ -20,6 +20,17 @@ public class MemberForm {
 	/** パスワード */
 	@Size(min=6, max=10, message="6文字以上、１０文字以下で入力してください。")
 	private String password;
+	
+	/**パスワードをチェック*/
+	private String passwordCheck;
+	
+	
+	public String getPasswordCheck() {
+		return passwordCheck;
+	}
+	public void setPasswordCheck(String passwordCheck) {
+		this.passwordCheck = passwordCheck;
+	}
 	public String getName() {
 		return name;
 	}

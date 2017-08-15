@@ -84,9 +84,19 @@ public class MemberRepository {
 	public Member findByMainAddress(String MailAddress) {
 		String sql = "select id, name, mail_address, password from members where mail_address = :email;";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email", MailAddress);
-		Member member = template.queryForObject(sql, param, MEMBER_ROW_MAPPER);
+		Member member = null;
 		
-		return member;
+		try {
+			member = template.queryForObject(sql, param, MEMBER_ROW_MAPPER);
+			return member;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
 	}
 	
 }

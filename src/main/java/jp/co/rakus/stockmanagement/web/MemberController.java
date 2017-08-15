@@ -67,6 +67,12 @@ public class MemberController {
 			return form();
 		}
 		
+//		パスワードチェック
+		if (!(form.getPassword().equals(form.getPasswordCheck()))) {
+			result.rejectValue("passwordCheck", null, "パスワードが一致していません。");
+			return form();
+		}
+		
 		Member member = new Member();
 		BeanUtils.copyProperties(form, member);
 		memberService.save(member);
